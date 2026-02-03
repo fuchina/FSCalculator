@@ -11,8 +11,12 @@ Pod::Spec.new do |s|
   s.author           = { 'fudon' => '1245102331@qq.com' }
   s.source           = { :git => 'https://github.com/fuchina/FSCalculator.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '8.0'
-  s.source_files = 'FSCalculator/Classes/*'
+  s.ios.deployment_target = '12.0'
+  
+  s.source_files = 'FSCalculator/**/*'
+  
+  s.swift_version = '5.9'
+  
   s.frameworks = 'UIKit'
 
 end
