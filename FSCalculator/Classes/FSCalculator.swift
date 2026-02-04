@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 
 @objcMembers
-public class FSCalculatorS: NSObject {
+public class FSCalculator: NSObject {
     
     // MARK: - 等额本金计算
     /// 等额本金计算公式
