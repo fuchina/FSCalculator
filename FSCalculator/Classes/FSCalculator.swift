@@ -18,17 +18,17 @@ open class FSCalculator: NSObject {
     ///   - rate: 年利率，如4.9%，输入4.9
     ///   - month: 期数，也就是月数，如10年，输入120
     /// - Returns: 总还款除以贷款的倍数
-    public static func debj(withYearRate rate: CGFloat, monthes month: Int) -> CGFloat {
+    public static func debj(withYearRate rate: Double, monthes month: Int) -> Double {
         guard rate >= 0.01 else { return 1 }
         
-        let money: CGFloat = 1.0
+        let money: Double = 1.0
         let r = rate / 1200.0
         
         var allInterest: CGFloat = 0
-        let payMonth = money / CGFloat(month)
+        let payMonth = money / Double(month)
         
         for x in 0..<month {
-            let mI = (money - CGFloat(x) * payMonth) * r
+            let mI = (money - Double(x) * payMonth) * r
             allInterest += mI
         }
         
@@ -47,8 +47,8 @@ open class FSCalculator: NSObject {
         let money: CGFloat = 1.0
         let r = rate / 1200.0
         
-        let monthPay = (money * r * pow(1 + r, CGFloat(month))) / (pow(1 + r, CGFloat(month)) - 1)
-        return monthPay * CGFloat(month) / money
+        let monthPay = (money * r * pow(1 + r, Double(month))) / (pow(1 + r, Double(month)) - 1)
+        return monthPay * Double(month) / money
     }
     
     // MARK: - 价格涨幅计算
@@ -57,7 +57,7 @@ open class FSCalculator: NSObject {
     ///   - days: 周转天数，单位：天，即多少天后会卖出
     ///   - rate: 目标年化收益率，比如20%输入0.2
     /// - Returns: 价格倍数，比如输入90，0.3820,返回1.094129，即90天卖出应该定价为所投入资本的1.094129倍
-    public static func priceRise(withDays days: CGFloat, yearRate rate: CGFloat) -> CGFloat {
+    public static func priceRise(withDays days: Double, yearRate rate: Double) -> Double {
         let actualDays = max(days, 1)
         let actualRate = max(0, rate)
         let year: CGFloat = 365.2422
